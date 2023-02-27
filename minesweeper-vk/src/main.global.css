@@ -1,0 +1,48 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure,
+img {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: Roboto ,Arial, Helvetica, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+input {
+  border: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background: none;
+  transition: transform .3s ease-in-out;
+}
