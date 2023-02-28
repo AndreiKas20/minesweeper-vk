@@ -1,1 +1,1 @@
-.gameBlock {    position: relative;    width: 556px;    height: 640px;}.border {}.borderLeft{    position: absolute;    width: 100%;    height: 636px;    left: 0;    top: 0;}
+.gameBlock {    padding: 19px;    position: relative;    width: 548px;    height: 633px;    background-image: url("../../assets/images/mask-m.jpg");    background-repeat: no-repeat;}

@@ -1,0 +1,11 @@
+.minesField {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    position: relative;
+    left: -1px;
+    bottom: -20px;
+    width: 513px;
+    height: 513px;
+    background-color: #c0c0c0;
+}
