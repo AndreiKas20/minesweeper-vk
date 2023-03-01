@@ -1,6 +1,6 @@
-import React, {CSSProperties, useState} from 'react';
+import React, {CSSProperties, useLayoutEffect, useState} from 'react';
 import styles from './button.module.css';
-import {arrMines, itemMines} from "../../types/arrayMines";
+import {itemMines} from "../../types/arrayMines";
 import targetMine from "../store/targetMine";
 
 interface IButton {
@@ -12,6 +12,10 @@ export function Button({state}: IButton) {
     const click = () => {
         targetMine.changeMineTarget(state)
     }
+    useLayoutEffect(() => {
+        setSpritePosition(state.backPosition)
+    }, [state]);
+
     const btnDown = () => {
         setSpritePosition({backgroundPosition: '-33px -102px'})
     }

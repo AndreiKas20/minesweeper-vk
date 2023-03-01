@@ -2,7 +2,7 @@ import {makeAutoObservable} from "mobx";
 import {itemMines} from "../../types/arrayMines";
 
 class TargetMine {
-    mineTarget: itemMines = {isMine: false, x: 0, y:0}
+    mineTarget: itemMines = {isMine: false, x: 0, y:0, touched: false, backPosition: {backgroundPosition: '2px  -102px'}}
     constructor() {
         makeAutoObservable(this)
     }
