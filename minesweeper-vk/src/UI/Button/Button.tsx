@@ -45,47 +45,49 @@ export const Button = observer(({state}: IButton) => {
             setIsDisabled(false)
         }
     }, [game])
-    useEffect(() => {
-        if (state.stateBtn === 0) {
-            setSpritePosition({backgroundPosition: '0 -102px'})
-        } else if (state.stateBtn === 1) {
-            setSpritePosition({backgroundPosition: '0 -136px'})
-            setIsDisabled(true)
-        } else if (state.stateBtn === 2) {
-            setSpritePosition({backgroundPosition: '-32px -136px'})
-            setIsDisabled(true)
-        } else if (state.stateBtn === 3) {
-            setSpritePosition({backgroundPosition: '-66px -136px'})
-            setIsDisabled(true)
-        } else if (state.stateBtn === 4) {
-            setSpritePosition({backgroundPosition: '-100px -136px'})
-            setIsDisabled(true)
-        } else if (state.stateBtn === 5) {
-            setSpritePosition({backgroundPosition: '-134px -136px'})
-            setIsDisabled(true)
-        } else if (state.stateBtn === 6) {
-            setSpritePosition({backgroundPosition: '-168px -136px'})
-            setIsDisabled(true)
-        } else if (state.stateBtn === 7) {
-            setSpritePosition({backgroundPosition: '-202px -136px'})
-            setIsDisabled(true)
-        } else if (state.stateBtn === 8) {
-            setSpritePosition({backgroundPosition: '-236px -136px'})
-            setIsDisabled(true)
-        } else if (state.stateBtn === 'flag') {
-            setSpritePosition({backgroundPosition: '-66px -102px'})
-        } else if (state.stateBtn === 'question') {
-            setSpritePosition({backgroundPosition: '-100px -102px'})
-        } else if (state.stateBtn === 'minaRed') {
-            setSpritePosition({backgroundPosition: '-202px -102px'})
-        } else if (state.stateBtn === 'minaBlack') {
-            setSpritePosition({backgroundPosition: '-168px -102px'})
-        } else if (state.stateBtn === 'minaCross') {
-            setSpritePosition({backgroundPosition: '-236px -102px'})
-        } else if (state.stateBtn === 'empty') {
-            setSpritePosition({backgroundPosition: '-32px -102px'})
-            setIsDisabled(true)
-        }
+    useLayoutEffect(() => {
+      return () => {
+          if (state.stateBtn === 0) {
+              setSpritePosition({backgroundPosition: '0 -102px'})
+          } else if (state.stateBtn === 1) {
+              setSpritePosition({backgroundPosition: '0 -136px'})
+              setIsDisabled(true)
+          } else if (state.stateBtn === 2) {
+              setSpritePosition({backgroundPosition: '-32px -136px'})
+              setIsDisabled(true)
+          } else if (state.stateBtn === 3) {
+              setSpritePosition({backgroundPosition: '-66px -136px'})
+              setIsDisabled(true)
+          } else if (state.stateBtn === 4) {
+              setSpritePosition({backgroundPosition: '-100px -136px'})
+              setIsDisabled(true)
+          } else if (state.stateBtn === 5) {
+              setSpritePosition({backgroundPosition: '-134px -136px'})
+              setIsDisabled(true)
+          } else if (state.stateBtn === 6) {
+              setSpritePosition({backgroundPosition: '-168px -136px'})
+              setIsDisabled(true)
+          } else if (state.stateBtn === 7) {
+              setSpritePosition({backgroundPosition: '-202px -136px'})
+              setIsDisabled(true)
+          } else if (state.stateBtn === 8) {
+              setSpritePosition({backgroundPosition: '-236px -136px'})
+              setIsDisabled(true)
+          } else if (state.stateBtn === 'flag') {
+              setSpritePosition({backgroundPosition: '-66px -102px'})
+          } else if (state.stateBtn === 'question') {
+              setSpritePosition({backgroundPosition: '-100px -102px'})
+          } else if (state.stateBtn === 'minaRed') {
+              setSpritePosition({backgroundPosition: '-202px -102px'})
+          } else if (state.stateBtn === 'minaBlack') {
+              setSpritePosition({backgroundPosition: '-168px -102px'})
+          } else if (state.stateBtn === 'minaCross') {
+              setSpritePosition({backgroundPosition: '-236px -102px'})
+          } else if (state.stateBtn === 'empty') {
+              setSpritePosition({backgroundPosition: '-32px -102px'})
+              setIsDisabled(true)
+          }
+      }
     }, [state, isDisabled]);
     return (
         <button disabled={isDisabled} onMouseDown={keyDown}
