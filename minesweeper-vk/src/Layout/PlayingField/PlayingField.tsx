@@ -40,12 +40,13 @@ export const PlayingField = observer(() => {
             stateGame.changeState('start')
         } else {
             setIsTarget(false)
+            stateGame.changeState('start')
         }
     }, [clickMines, arr]);
     return (
         <div style={{backgroundImage: back}} className={styles.gameBlock}>
             <Header/>
-            <MinesField arrMines={arr}/>
+            <MinesField  arrMines={arr}/>
         </div>
     );
 })

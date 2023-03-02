@@ -46,3 +46,7 @@ button {
   background: none;
   transition: transform .3s ease-in-out;
 }
+
+button:disabled {
+  cursor: default;
+}

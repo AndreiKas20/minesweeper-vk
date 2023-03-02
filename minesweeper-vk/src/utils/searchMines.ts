@@ -54,7 +54,6 @@ export const searchMines = (x: number, y: number, array: arrMines) => {
         }
     }
     if (array.filter(value => value.stateBtn === 0 ||value.stateBtn === 'flag' || value.stateBtn === 'question').length === 40 && array.filter(value => value.touched).length === 216) {
-        console.log('WIIIIIN')
         stateGame.changeState('win')
         setFlagForWin(array)
     }

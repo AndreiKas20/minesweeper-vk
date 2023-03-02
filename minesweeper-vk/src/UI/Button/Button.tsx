@@ -1,60 +1,96 @@
-import React, {CSSProperties, useLayoutEffect, useState} from 'react';
+import React, {CSSProperties, useEffect, useLayoutEffect, useState} from 'react';
 import styles from './button.module.css';
 import {itemMines} from "../../../types/arrayMines";
 import targetMine from "../../store/targetMine";
 import rightClickTarget from "../../store/rightClickTarget";
+import keyState from "../../store/keyState";
+import {observer} from "mobx-react-lite";
+import stateGame from "../../store/stateGame";
+import countFlags from "../../store/countFlags";
 
 interface IButton {
     state: itemMines
 }
 
-export function Button({state}: IButton) {
+export const Button = observer(({state}: IButton) => {
     const [spritePosition, setSpritePosition] = useState<CSSProperties>({backgroundPosition: '1px  -102px'})
-    const [countRight, setCountRight] = useState(1)
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [isKeyDown, setIsKeyDown] = useState(false)
+    const game = stateGame.stateGame
     const click = () => {
         targetMine.changeMineTarget(state)
     }
-    const rightClick = (e: React.MouseEvent) => {
-        setCountRight(v => v + 1)
-        console.log('right click', countRight)
-        rightClickTarget.changeState(state)
-        e.preventDefault()
+    const keyDown = () => {
+        keyState.changeState('down')
+        // setIsKeyDown(true)
     }
+    const keyUp = () => {
+        keyState.changeState('up')
+        // targetMine.changeMineTarget(state)
+        // setIsKeyDown(false)
+    }
+    const rightClick = (e: React.MouseEvent) => {
+        e.preventDefault()
+        rightClickTarget.changeState(state)
+        if (state.stateBtn === 'flag') {
+            countFlags.changePlus()
+        } else if (state.stateBtn === 0) {
+            countFlags.changeMinus()
+        }
+    }
+    useEffect(() => {
+        if (game === 'failure' || game === 'win') {
+            setIsDisabled(true)
+        } else {
+            setIsDisabled(false)
+        }
+    }, [game])
     useLayoutEffect(() => {
         if (state.stateBtn === 0) {
             setSpritePosition({backgroundPosition: '0 -102px'})
         } else if (state.stateBtn === 1) {
             setSpritePosition({backgroundPosition: '0 -136px'})
+            setIsDisabled(true)
         } else if (state.stateBtn === 2) {
             setSpritePosition({backgroundPosition: '-32px -136px'})
+            setIsDisabled(true)
         } else if (state.stateBtn === 3) {
             setSpritePosition({backgroundPosition: '-66px -136px'})
+            setIsDisabled(true)
         } else if (state.stateBtn === 4) {
             setSpritePosition({backgroundPosition: '-100px -136px'})
+            setIsDisabled(true)
         } else if (state.stateBtn === 5) {
             setSpritePosition({backgroundPosition: '-134px -136px'})
+            setIsDisabled(true)
         } else if (state.stateBtn === 6) {
             setSpritePosition({backgroundPosition: '-168px -136px'})
+            setIsDisabled(true)
         } else if (state.stateBtn === 7) {
             setSpritePosition({backgroundPosition: '-202px -136px'})
+            setIsDisabled(true)
         } else if (state.stateBtn === 8) {
             setSpritePosition({backgroundPosition: '-236px -136px'})
+            setIsDisabled(true)
         } else if (state.stateBtn === 'flag') {
             setSpritePosition({backgroundPosition: '-66px -102px'})
         } else if (state.stateBtn === 'question') {
             setSpritePosition({backgroundPosition: '-100px -102px'})
         } else if (state.stateBtn === 'minaRed') {
             setSpritePosition({backgroundPosition: '-202px -102px'})
-        } else if (state.stateBtn === 'minaBlack' ) {
+        } else if (state.stateBtn === 'minaBlack') {
             setSpritePosition({backgroundPosition: '-168px -102px'})
         } else if (state.stateBtn === 'minaCross') {
             setSpritePosition({backgroundPosition: '-236px -102px'})
         } else if (state.stateBtn === 'empty') {
             setSpritePosition({backgroundPosition: '-32px -102px'})
+            setIsDisabled(true)
         }
-    }, [state]);
+    }, [state, isDisabled]);
     return (
-        <button onContextMenu={(e: React.MouseEvent) => rightClick(e)} onClick={click} style={spritePosition}
+        <button disabled={isDisabled} onMouseDown={keyDown}
+                onContextMenu={(e: React.MouseEvent) => rightClick(e)} onMouseUp={keyUp}
+                onClick={click} style={!isKeyDown? spritePosition : {backgroundPosition: '-32px -102px'}}
                 className={styles.btn}/>
     );
-}
+})

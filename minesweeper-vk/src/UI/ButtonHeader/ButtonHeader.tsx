@@ -4,7 +4,9 @@ import stateGame from "../../store/stateGame";
 import targetMine from "../../store/targetMine";
 
 interface IBtn {
-  style: CSSProperties
+  style: CSSProperties,
+  keyDown: () => void,
+  keyUp: () => void,
 }
 
 export function ButtonHeader(props: IBtn) {
@@ -19,6 +21,6 @@ export function ButtonHeader(props: IBtn) {
     })
   }
   return (
-    <button onClick={click} style={props.style} className={styles.btn}/>
+    <button onMouseDown={props.keyDown} onMouseUp={props.keyUp} onClick={click} style={props.style} className={styles.btn}/>
   );
 }
