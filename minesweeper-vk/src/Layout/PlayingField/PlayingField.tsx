@@ -25,9 +25,7 @@ export const PlayingField = observer(() => {
     }, [game]);
 
     useEffect(() => {
-        return () => {
-            setArr(createNewArr)
-        }
+        setArr(createNewArr)
     }, [])
     useLayoutEffect(() => {
         if (clickMines.x === 0 || clickMines.y === 0) return
