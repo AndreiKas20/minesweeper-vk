@@ -2,7 +2,7 @@ import {makeAutoObservable} from "mobx";
 import {itemMines} from "../../types/arrayMines";
 
 class RightClickTarget {
-    stateClick: itemMines = {backPosition:{}, x:0, y:0, isMine:false, touched:false}
+    stateClick: itemMines = { x:0, y:0, isMine:false, touched:false, stateBtn: 0}
     constructor() {
         makeAutoObservable(this)
     }

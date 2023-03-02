@@ -18,23 +18,41 @@ export function Button({state}: IButton) {
         setCountRight(v => v + 1)
         console.log('right click', countRight)
         rightClickTarget.changeState(state)
-        // if (countRight === 0) {
-        //     setSpritePosition({backgroundPosition: '2px -102px'})
-        // } else if (countRight === 1) {
-        //     setSpritePosition({backgroundPosition: '-65px -102px'})
-        // } else if (countRight === 2) {
-        //     setSpritePosition({backgroundPosition: '-100px -102px'})
-        //     setCountRight(0)
-        // }
         e.preventDefault()
     }
     useLayoutEffect(() => {
-        setSpritePosition(state.backPosition)
+        if (state.stateBtn === 0) {
+            setSpritePosition({backgroundPosition: '0 -102px'})
+        } else if (state.stateBtn === 1) {
+            setSpritePosition({backgroundPosition: '0 -136px'})
+        } else if (state.stateBtn === 2) {
+            setSpritePosition({backgroundPosition: '-32px -136px'})
+        } else if (state.stateBtn === 3) {
+            setSpritePosition({backgroundPosition: '-66px -136px'})
+        } else if (state.stateBtn === 4) {
+            setSpritePosition({backgroundPosition: '-100px -136px'})
+        } else if (state.stateBtn === 5) {
+            setSpritePosition({backgroundPosition: '-134px -136px'})
+        } else if (state.stateBtn === 6) {
+            setSpritePosition({backgroundPosition: '-168px -136px'})
+        } else if (state.stateBtn === 7) {
+            setSpritePosition({backgroundPosition: '-202px -136px'})
+        } else if (state.stateBtn === 8) {
+            setSpritePosition({backgroundPosition: '-236px -136px'})
+        } else if (state.stateBtn === 'flag') {
+            setSpritePosition({backgroundPosition: '-66px -102px'})
+        } else if (state.stateBtn === 'question') {
+            setSpritePosition({backgroundPosition: '-100px -102px'})
+        } else if (state.stateBtn === 'minaRed') {
+            setSpritePosition({backgroundPosition: '-202px -102px'})
+        } else if (state.stateBtn === 'minaBlack' ) {
+            setSpritePosition({backgroundPosition: '-168px -102px'})
+        } else if (state.stateBtn === 'minaCross') {
+            setSpritePosition({backgroundPosition: '-236px -102px'})
+        } else if (state.stateBtn === 'empty') {
+            setSpritePosition({backgroundPosition: '-32px -102px'})
+        }
     }, [state]);
-
-    const btnDown = () => {
-        setSpritePosition({backgroundPosition: '-33px -102px'})
-    }
     return (
         <button onContextMenu={(e: React.MouseEvent) => rightClick(e)} onClick={click} style={spritePosition}
                 className={styles.btn}/>

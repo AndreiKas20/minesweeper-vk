@@ -6,14 +6,22 @@ export const createNewArr = () => {
     let arrMines: arrMines = []
     for (let i = 0; i < 256; i++) {
         if (i < 40) {
-            arrMines.push({isMine: true, x: 0, y: 0, touched: false, backPosition: {backgroundPosition: '2px  -102px'}})
+            arrMines.push({
+                isMine: true,
+                x: 0,
+                y: 0,
+                touched: false,
+                // backPosition: {backgroundPosition: '0  -102px'},
+                stateBtn: 0
+            })
         } else {
             arrMines.push({
                 isMine: false,
                 x: 0,
                 y: 0,
                 touched: false,
-                backPosition: {backgroundPosition: '2px  -102px'}
+                // backPosition: {backgroundPosition: '0  -102px'},
+                stateBtn: 0,
             })
         }
     }
@@ -31,7 +39,8 @@ export const createNewArr = () => {
             x: x,
             y: y,
             touched: false,
-            backPosition: arrMines[j].backPosition
+            // backPosition: arrMines[j].backPosition,
+            stateBtn: 0,
         }
     }
     return arrMines

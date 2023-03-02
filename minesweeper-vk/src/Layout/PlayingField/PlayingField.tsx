@@ -9,12 +9,15 @@ import {observer} from "mobx-react-lite";
 import targetMine from "../../store/targetMine";
 import {getAroundArr} from "../../utils/getAroundArr";
 import {searchMines} from "../../utils/searchMines";
+import stateGame from "../../store/stateGame";
+import {gameFailure} from "../../utils/gameFailure";
 
 
 export const PlayingField = observer(() => {
     const [arr, setArr] = useState<arrMines>([])
     const [isTarget, setIsTarget] = useState(true)
     const clickMines = targetMine.mineTarget
+    const gameState = stateGame.stateGame
     useEffect(() => {
         return () => {
             setArr(createNewArr)
