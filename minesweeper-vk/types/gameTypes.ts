@@ -1,1 +1,1 @@
-export type gameType = 'stop' | 'start' | 'failure' | 'win'
+export type gameType = 'stop' | 'start' | 'failure' | 'win' | 'restart'

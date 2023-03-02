@@ -11,7 +11,6 @@ export const createNewArr = () => {
                 x: 0,
                 y: 0,
                 touched: false,
-                // backPosition: {backgroundPosition: '0  -102px'},
                 stateBtn: 0
             })
         } else {
@@ -20,7 +19,6 @@ export const createNewArr = () => {
                 x: 0,
                 y: 0,
                 touched: false,
-                // backPosition: {backgroundPosition: '0  -102px'},
                 stateBtn: 0,
             })
         }
@@ -39,7 +37,6 @@ export const createNewArr = () => {
             x: x,
             y: y,
             touched: false,
-            // backPosition: arrMines[j].backPosition,
             stateBtn: 0,
         }
     }

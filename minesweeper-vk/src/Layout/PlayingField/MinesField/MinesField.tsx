@@ -1,6 +1,6 @@
 import React, {useEffect, useLayoutEffect} from 'react';
 import styles from './minesfield.module.css';
-import {Button} from "../../../UI";
+import {Button} from "../../../UI/Button";
 import {generateRandomString} from "../../../utils/getRandomString";
 import {observer} from "mobx-react-lite";
 import targetMine from "../../../store/targetMine";

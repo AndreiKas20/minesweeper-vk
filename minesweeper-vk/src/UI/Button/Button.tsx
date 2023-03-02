@@ -1,8 +1,8 @@
 import React, {CSSProperties, useLayoutEffect, useState} from 'react';
 import styles from './button.module.css';
-import {itemMines} from "../../types/arrayMines";
-import targetMine from "../store/targetMine";
-import rightClickTarget from "../store/rightClickTarget";
+import {itemMines} from "../../../types/arrayMines";
+import targetMine from "../../store/targetMine";
+import rightClickTarget from "../../store/rightClickTarget";
 
 interface IButton {
     state: itemMines

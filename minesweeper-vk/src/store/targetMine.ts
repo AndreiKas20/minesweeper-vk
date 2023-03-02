@@ -7,7 +7,6 @@ class TargetMine {
         x: 0,
         y: 0,
         touched: false,
-        // backPosition: {backgroundPosition: '2px  -102px'},
         stateBtn: 0
     }
 

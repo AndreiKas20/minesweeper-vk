@@ -10,14 +10,20 @@ import targetMine from "../../store/targetMine";
 import {getAroundArr} from "../../utils/getAroundArr";
 import {searchMines} from "../../utils/searchMines";
 import stateGame from "../../store/stateGame";
-import {gameFailure} from "../../utils/gameFailure";
 
 
 export const PlayingField = observer(() => {
     const [arr, setArr] = useState<arrMines>([])
     const [isTarget, setIsTarget] = useState(true)
     const clickMines = targetMine.mineTarget
-    const gameState = stateGame.stateGame
+    const game = stateGame.stateGame
+    useEffect(() => {
+        if (game === 'restart') {
+            setIsTarget(true)
+            setArr(createNewArr)
+        }
+    }, [game]);
+
     useEffect(() => {
         return () => {
             setArr(createNewArr)
@@ -31,6 +37,7 @@ export const PlayingField = observer(() => {
             const newArr = createNewArr()
             searchMines(clickMines.x, clickMines.y, newArr)
             setArr(newArr)
+            stateGame.changeState('start')
         } else {
             setIsTarget(false)
         }
