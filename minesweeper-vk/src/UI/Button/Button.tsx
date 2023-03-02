@@ -90,7 +90,7 @@ export const Button = observer(({state}: IButton) => {
     return (
         <button disabled={isDisabled} onMouseDown={keyDown}
                 onContextMenu={(e: React.MouseEvent) => rightClick(e)} onMouseUp={keyUp}
-                onClick={click} style={!isKeyDown? spritePosition : {backgroundPosition: '-32px -102px'}}
+                onClick={click} style={spritePosition}
                 className={styles.btn}/>
     );
 })
