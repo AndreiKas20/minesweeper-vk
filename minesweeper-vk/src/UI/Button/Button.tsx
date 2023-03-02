@@ -1,4 +1,4 @@
-import React, {CSSProperties, useEffect, useLayoutEffect, useState} from 'react';
+import React, {CSSProperties, useEffect, useState} from 'react';
 import styles from './button.module.css';
 import {itemMines} from "../../../types/arrayMines";
 import targetMine from "../../store/targetMine";
@@ -7,15 +7,18 @@ import keyState from "../../store/keyState";
 import {observer} from "mobx-react-lite";
 import stateGame from "../../store/stateGame";
 import countFlags from "../../store/countFlags";
+import {getBackBtn} from "../../utils/getBackBtn";
 
 interface IButton {
     state: itemMines
+    refresh: boolean
 }
 
-export const Button = observer(({state}: IButton) => {
-    const [spritePosition, setSpritePosition] = useState<CSSProperties>({backgroundPosition: '1px  -102px'})
+export const Button = observer(({state, refresh}: IButton) => {
+    const [spritePosition, setSpritePosition] = useState<CSSProperties>(getBackBtn(state))
     const [isDisabled, setIsDisabled] = useState(false)
     const [isKeyDown, setIsKeyDown] = useState(false)
+    const [isRefresh, setIsRefresh] = useState(false)
     const game = stateGame.stateGame
     const click = () => {
         targetMine.changeMineTarget(state)
@@ -45,7 +48,7 @@ export const Button = observer(({state}: IButton) => {
             setIsDisabled(false)
         }
     }, [game])
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (state.stateBtn === 0) {
             setSpritePosition({backgroundPosition: '0 -102px'})
         } else if (state.stateBtn === 1) {

@@ -1,4 +1,4 @@
-import React, {CSSProperties, useEffect, useLayoutEffect, useState} from 'react';
+import React, {CSSProperties, useEffect, useState} from 'react';
 import styles from './header.module.css'
 import {ButtonHeader} from "../../../UI/ButtonHeader";
 import {NumberDisplay} from "../../../UI/NumberDisplay";
@@ -24,7 +24,7 @@ export const Header = observer(() => {
     }
     useEffect(() => {
         setBackDisplayFlags(generateNumber(flags))
-    },[flags])
+    }, [flags])
     useEffect(() => {
         if (game === "failure") {
             setSmile({backgroundPosition: '-216px -50px'})
@@ -41,7 +41,7 @@ export const Header = observer(() => {
             setSmile({backgroundPosition: '0 -50px'})
         }
     }, [game])
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (key === 'down') {
             setSmile({backgroundPosition: '-108px -50px'})
         } else if (key === 'up') {

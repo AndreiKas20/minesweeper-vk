@@ -8,15 +8,13 @@ import {arrMines, itemMines} from "../../../../types/arrayMines";
 import {searchMines} from "../../../utils/searchMines";
 import rightClickTarget from "../../../store/rightClickTarget";
 import {rightClickFunc} from "../../../utils/rightClickFunc";
-import stateGame from "../../../store/stateGame";
-import {gameType} from "../../../../types/gameTypes";
-import {gameFailure} from "../../../utils/gameFailure";
 
 interface IMines {
     arrMines: arrMines
+    refreshArr: boolean
 }
 
-export const MinesField = observer(({arrMines}: IMines) => {
+export const MinesField = observer(({arrMines, refreshArr}: IMines) => {
     const clickMines: itemMines = targetMine.mineTarget
     const rightClick: itemMines = rightClickTarget.stateClick
     useLayoutEffect(() => {
@@ -28,7 +26,7 @@ export const MinesField = observer(({arrMines}: IMines) => {
     return (
         <div className={styles.minesField}>
             {
-                arrMines.map(v => <Button state={v} key={generateRandomString()}/>)
+                arrMines.map(v => <Button refresh={refreshArr} state={v} key={generateRandomString()}/>)
             }
         </div>
     );

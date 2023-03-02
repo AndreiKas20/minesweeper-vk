@@ -44,7 +44,7 @@ export const PlayingField = observer(() => {
     return (
         <div style={{backgroundImage: back}} className={styles.gameBlock}>
             <Header/>
-            <MinesField  arrMines={arr}/>
+            <MinesField refreshArr={isTarget} arrMines={arr}/>
         </div>
     );
 })
