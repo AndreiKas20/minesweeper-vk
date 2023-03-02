@@ -45,7 +45,7 @@ export const Button = observer(({state}: IButton) => {
             setIsDisabled(false)
         }
     }, [game])
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (state.stateBtn === 0) {
             setSpritePosition({backgroundPosition: '0 -102px'})
         } else if (state.stateBtn === 1) {
